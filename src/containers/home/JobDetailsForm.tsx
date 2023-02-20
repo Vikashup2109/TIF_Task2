@@ -23,7 +23,6 @@ const JobDetailsForm = () => {
                     // jobPosition: Yup.string().required("Job position is required"),
                }),
                onSubmit: (values) => {
-                    console.log("Job details submitted ")
                     ctx?.setFormStep(2);
                },
           });

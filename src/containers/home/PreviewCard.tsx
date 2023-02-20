@@ -115,27 +115,15 @@ const PreviewCard: React.FC<{
                          <DataCard title="Interview Settings">
                               <KeyValue
                                    title="Interview Duration"
-                                   value={
-                                        interviewDurationOptions.find(
-                                             (item) => item?.value === interviewSettings?.interviewDuration
-                                        )?.label
-                                   }
+                                   value={ctx?.interviewDuration}
                               />
                               <KeyValue
                                    title="Interview Language"
-                                   value={
-                                        interviewLanguageOptions.find(
-                                             (item) => item?.value === interviewSettings?.interviewLanguage
-                                        )?.label
-                                   }
+                                   value={ctx?.interviewLanguage}
                               />
                               <KeyValue
                                    title="Interview Mode"
-                                   value={
-                                        interviewModeOptions.find(
-                                             (item) => item?.value === interviewSettings?.interviewMode
-                                        )?.label
-                                   }
+                                   value={ctx?.interviewMode}
                               />
                          </DataCard>
                     </Box>

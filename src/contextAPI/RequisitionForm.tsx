@@ -21,6 +21,12 @@ const RequisitionFormContext = React.createContext<{
      setUrgency: React.Dispatch<React.SetStateAction<string>>,
      numOfOpenings: string,
      setNumOfOpenings: React.Dispatch<React.SetStateAction<string>>,
+     interviewMode: string,
+     setInterviewMode: React.Dispatch<React.SetStateAction<string>>,
+     interviewDuration: string,
+     setInterviewDuration: React.Dispatch<React.SetStateAction<string>>,
+     interviewLanguage: string,
+     setInterviewLanguage: React.Dispatch<React.SetStateAction<string>>,
 
 } | null>(null)
 const RequisitionFormContextProvider = ({ children }: IProps) => {
@@ -33,11 +39,12 @@ const RequisitionFormContextProvider = ({ children }: IProps) => {
      const [numOfOpenings, setNumOfOpenings] = useState("0")
      const [gender, setGender] = useState("")
      const [urgency, setUrgency] = useState("")
-
-     console.log({ urgency })
+     const [interviewMode, setInterviewMode] = useState("")
+     const [interviewDuration, setInterviewDuration] = useState("")
+     const [interviewLanguage, setInterviewLanguage] = useState("")
 
      return (<RequisitionFormContext.Provider value={{
-          formStep, setFormStep, requisitionTitle, setRequisitionTitle, numOfOpenings, setNumOfOpenings, gender, setGender, urgency, setUrgency, jobTitle, setJobTitle, jobDetails, setJobDetails, jobLocation, setJobLocation
+          formStep, setFormStep, requisitionTitle, setRequisitionTitle, numOfOpenings, setNumOfOpenings, gender, setGender, urgency, setUrgency, jobTitle, setJobTitle, jobDetails, setJobDetails, jobLocation, setJobLocation, interviewMode, setInterviewMode, interviewDuration, setInterviewDuration, interviewLanguage, setInterviewLanguage
      }}>
           {children}
      </RequisitionFormContext.Provider>)
