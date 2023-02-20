@@ -9,7 +9,7 @@ import { RequisitionFormContext } from "@src/contextAPI/RequisitionForm";
 const JobDetailsForm = () => {
      const ctx = React.useContext(RequisitionFormContext)
 
-     const { handleChange, errors, touched, handleBlur, handleSubmit, values } =
+     const { handleChange, errors, touched, handleBlur, handleSubmit, values, setFieldValue } =
           useFormik<IJobDetails>({
                initialValues: {
                     jobTitle: "",
@@ -35,8 +35,11 @@ const JobDetailsForm = () => {
                          label="Job Title"
                          placeholder="Enter job title"
                          name="jobTitle"
-                         onChange={(e) => ctx?.setJobTitle(e.target.value)}
-                         value={ctx?.jobTitle}
+                         onChange={(e) => {
+                              setFieldValue("jobTitle", e.target.value);
+                              ctx?.setJobTitle(e.target.value)
+                         }}
+                         value={values.jobTitle}
                          onBlur={handleBlur}
                          error={errors?.jobTitle}
                          touched={touched?.jobTitle}
@@ -45,8 +48,11 @@ const JobDetailsForm = () => {
                          label="Job Details"
                          placeholder="Enter job details"
                          name="jobDetails"
-                         onChange={(e) => ctx?.setJobDetails(e.target.value)}
-                         value={ctx?.jobDetails}
+                         onChange={(e) => {
+                              setFieldValue("jobDetails", e.target.value);
+                              ctx?.setJobDetails(e.target.value)
+                         }}
+                         value={values.jobDetails}
                          onBlur={handleBlur}
                          error={errors?.jobDetails}
                          touched={touched?.jobDetails}
@@ -55,8 +61,11 @@ const JobDetailsForm = () => {
                          label="Job Location"
                          name="jobLocation"
                          placeholder="Enter job location"
-                         onChange={(e) => ctx?.setJobLocation(e.target.value)}
-                         value={ctx?.jobLocation}
+                         onChange={(e) => {
+                              setFieldValue("jobLocation", e.target.value);
+                              ctx?.setJobLocation(e.target.value)
+                         }}
+                         value={values.jobLocation}
                          onBlur={handleBlur}
                          error={errors.jobLocation}
                          touched={touched.jobLocation}
