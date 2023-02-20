@@ -10,6 +10,7 @@ import {
      interviewModeOptions,
 } from "./constants";
 import { RequisitionFormContext } from "@src/contextAPI/RequisitionForm";
+import * as Yup from "yup";
 
 const InterviewDetailsForm: React.FC<{
      handleTab: (n: PageNumbers) => void;
@@ -28,6 +29,11 @@ const InterviewDetailsForm: React.FC<{
                interviewDuration: "",
                interviewLanguage: "",
           },
+          validationSchema: Yup.object().shape({
+               interviewMode: Yup.string().required("Interview mode is required"),
+               interviewDuration: Yup.string().required("Interview duration is required"),
+               interviewLanguage: Yup.string().required("Interview language is required"),
+          }),
           onSubmit: (values) => {
                alert("Form successfully submitted");
           },
@@ -77,8 +83,6 @@ const InterviewDetailsForm: React.FC<{
                          placeholder="Select interview language"
                          options={interviewLanguageOptions}
                          onChange={(name: string, value: string) => {
-                              console.log({ name, value });
-
                               let interviewLanguage = "";
                               if (value === "en") interviewLanguage = "English"
                               else if (value === "hi") interviewLanguage = "Hindi"
