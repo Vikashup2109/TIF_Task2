@@ -64,7 +64,7 @@ const RequisitionDetailsForm = () => {
                          name="noOfOpenings"
                          onChange={(e) => {
                               setFieldValue("noOfOpenings", e.target.value);
-                              ctx?.setRequisitionTitle(e.target.value)
+                              ctx?.setNumOfOpenings(e.target.value)
                          }}
                          onBlur={handleBlur}
                          value={values.noOfOpenings}
