@@ -35,9 +35,9 @@ const JobDetailsForm = () => {
                          label="Job Title"
                          placeholder="Enter job title"
                          name="jobTitle"
-                         onChange={handleChange}
+                         onChange={(e) => ctx?.setJobTitle(e.target.value)}
+                         value={ctx?.jobTitle}
                          onBlur={handleBlur}
-                         value={values?.jobTitle}
                          error={errors?.jobTitle}
                          touched={touched?.jobTitle}
                     />
@@ -45,9 +45,9 @@ const JobDetailsForm = () => {
                          label="Job Details"
                          placeholder="Enter job details"
                          name="jobDetails"
-                         onChange={handleChange}
+                         onChange={(e) => ctx?.setJobDetails(e.target.value)}
+                         value={ctx?.jobDetails}
                          onBlur={handleBlur}
-                         value={values?.jobDetails}
                          error={errors?.jobDetails}
                          touched={touched?.jobDetails}
                     />
@@ -55,11 +55,11 @@ const JobDetailsForm = () => {
                          label="Job Location"
                          name="jobLocation"
                          placeholder="Enter job location"
-                         onChange={handleChange}
+                         onChange={(e) => ctx?.setJobLocation(e.target.value)}
+                         value={ctx?.jobLocation}
                          onBlur={handleBlur}
                          error={errors.jobLocation}
                          touched={touched.jobLocation}
-                         value={values.jobLocation}
                     />
                     <Flex w="100%" justify="flex-end" mt="4rem" gap="20px">
                          <Button colorScheme="gray" type="button" onClick={() => ctx?.setFormStep(0)}>

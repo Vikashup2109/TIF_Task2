@@ -1,12 +1,5 @@
 import React, { useState } from "react"
 
-enum GENDER {
-     MALE = "Male", FEMALE = "Female", NON_BINARY = "Non Binary"
-}
-enum URGENCY {
-     URGENT = "Urgent", IMMEDIATE_JOINING = "Immediate Joining", RELAXED = "Relaxed"
-}
-
 interface IProps {
      children: React.ReactNode
 }
@@ -22,26 +15,26 @@ const RequisitionFormContext = React.createContext<{
      setJobDetails: React.Dispatch<React.SetStateAction<string>>,
      jobLocation: string,
      setJobLocation: React.Dispatch<React.SetStateAction<string>>,
-     gender: GENDER | null,
-     setGender: React.Dispatch<React.SetStateAction<GENDER | null>>,
-     urgency: URGENCY | null,
-     setUrgency: React.Dispatch<React.SetStateAction<URGENCY | null>>,
-     numOfOpenings: number,
-     setNumOfOpenings: React.Dispatch<React.SetStateAction<number>>,
+     gender: string,
+     setGender: React.Dispatch<React.SetStateAction<string>>,
+     urgency: string,
+     setUrgency: React.Dispatch<React.SetStateAction<string>>,
+     numOfOpenings: string,
+     setNumOfOpenings: React.Dispatch<React.SetStateAction<string>>,
 
 } | null>(null)
 const RequisitionFormContextProvider = ({ children }: IProps) => {
      const [formStep, setFormStep] = useState<0 | 1 | 2>(0);
-     console.log({ formStep })
 
      const [requisitionTitle, setRequisitionTitle] = useState("")
      const [jobTitle, setJobTitle] = useState("")
      const [jobDetails, setJobDetails] = useState("")
      const [jobLocation, setJobLocation] = useState("")
-     const [numOfOpenings, setNumOfOpenings] = useState(0)
-     const [gender, setGender] = useState<GENDER | null>(null)
-     const [urgency, setUrgency] = useState<URGENCY | null>(null)
+     const [numOfOpenings, setNumOfOpenings] = useState("0")
+     const [gender, setGender] = useState("")
+     const [urgency, setUrgency] = useState("")
 
+     console.log({ urgency })
 
      return (<RequisitionFormContext.Provider value={{
           formStep, setFormStep, requisitionTitle, setRequisitionTitle, numOfOpenings, setNumOfOpenings, gender, setGender, urgency, setUrgency, jobTitle, setJobTitle, jobDetails, setJobDetails, jobLocation, setJobLocation

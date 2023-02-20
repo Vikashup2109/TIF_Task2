@@ -37,7 +37,7 @@ const RequisitionDetailsForm = () => {
                urgency: Yup.string().required("Urgency is required"),
                gender: Yup.string().required("Gender is required"),
           }),
-          onSubmit: (values) => {
+          onSubmit: () => {
                ctx?.setFormStep(1);
           },
      });
@@ -49,9 +49,12 @@ const RequisitionDetailsForm = () => {
                          label="Requisition Title"
                          placeholder="Enter requisition title"
                          name="requisitionTitle"
-                         onChange={handleChange}
+                         onChange={(e) => {
+                              setFieldValue("requisitionTitle", e.target.value);
+                              ctx?.setRequisitionTitle(e.target.value)
+                         }}
                          onBlur={handleBlur}
-                         value={values?.requisitionTitle}
+                         value={values.requisitionTitle}
                          error={errors?.requisitionTitle}
                          touched={touched?.requisitionTitle}
                     />
@@ -59,9 +62,12 @@ const RequisitionDetailsForm = () => {
                          label="Number of openings"
                          placeholder="Enter number of openings"
                          name="noOfOpenings"
-                         onChange={handleChange}
+                         onChange={(e) => {
+                              setFieldValue("noOfOpenings", e.target.value);
+                              ctx?.setRequisitionTitle(e.target.value)
+                         }}
                          onBlur={handleBlur}
-                         value={values?.noOfOpenings}
+                         value={values.noOfOpenings}
                          error={errors?.noOfOpenings}
                          touched={touched?.noOfOpenings}
                     />
@@ -70,22 +76,38 @@ const RequisitionDetailsForm = () => {
                          name="gender"
                          placeholder="Select gender"
                          options={genderOptions}
-                         onChange={setFieldValue}
-                         onBlur={setFieldTouched}
+                         onChange={(_name: string, val: string) => {
+                              let selectedGender = ""
+                              if (val === 'm') selectedGender = "Male"
+                              else if (val === 'f') selectedGender = "Female"
+                              else if (val === 'nb') selectedGender = "Non Binary"
+
+                              setFieldValue("gender", selectedGender)
+                              ctx?.setGender(selectedGender)
+                         }}
+                         onBlur={handleBlur}
+                         value={values.gender}
                          error={errors.gender}
                          touched={touched.gender}
-                         value={values.gender}
                     />
                     <FormSelect
                          label="Urgency"
                          name="urgency"
                          placeholder="Select urgency"
                          options={urgencyOptions}
-                         onChange={setFieldValue}
-                         onBlur={setFieldTouched}
+                         onChange={(_name: string, val: string) => {
+                              let selectedUrgency = ""
+                              if (val === '0') selectedUrgency = "Urgent"
+                              else if (val === '1') selectedUrgency = "Immediate Joining"
+                              else if (val === '2') selectedUrgency = "Relaxed"
+
+                              setFieldValue("urgency", selectedUrgency)
+                              ctx?.setUrgency(selectedUrgency)
+                         }}
+                         onBlur={handleBlur}
+                         value={values.gender}
                          error={errors.urgency}
                          touched={touched.urgency}
-                         value={values.urgency}
                     />
                     <Flex w="100%" justify="flex-end" mt="4rem">
                          <Button colorScheme="red" type="submit">
